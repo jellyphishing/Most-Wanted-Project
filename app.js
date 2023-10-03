@@ -141,7 +141,7 @@ function mainMenu(person, people) {
 			break;
 		case 'family':
 			let personFamily = findPersonFamily(person, people);
-			results =displayPeople('Family', personFamily);
+			//results =displayPeople('Family', personFamily);
 			break;
 		case 'descendants':
 			let personDescendants = findPersonDescendants(person, people);
@@ -163,24 +163,29 @@ function displayPersonInfo(person){
 	
 	}
 
-function findPersonFamily(person, people){
+function findPersonFamily(foundPerson, people){
+	let results;
+	const spouseFilterResults = people.filter((person) => person.id === foundPerson.currentSpouse);
+	const parentsFilterResults = people.filter((person) => foundPerson.parents.includes(person.id));
+	const siblingsFilterResults = people.filter((person) => person.parents.includes(foundPerson.parents[0]));
+	displayPeople(`Spouse`, spouseFilterResults);
+	displayPeople(`Parents`, parentsFilterResults);
+	displayPeople(`Siblings`, siblingsFilterResults);
 	
-	const spouseFilterResults = people.filter((el) => el.id === person.currentSpouse);
-	const parentsFilterResults = people.filter((el) => el.id === person.parents);
-	const siblingsFilterResults = people.filter((el) => el.parents === person.parents);
-	
-	alert(`Spouse: ${spouseFilterResults}\n Parents: ${parentsFilterResults}\n Siblings: ${siblingsFilterResults}`);
-
+	return results;
 	}
 	
 
 
 
 function findPersonDescendants(person, people){
+	let results;
 	const  childrenFilterResults   =people.filter((el) => el.parents === person.id);
 	const grandkidsFilterResults = people.filter((el) => el.parents === childrenFilterResults);
-	alert(`Descendants:${childrenFilterResults}\n${grandkidsFilterResults}`);
-	}
+	alert(`Descendants: ${childrenFilterResults}\n${grandkidsFilterResults}`);
+	
+	return results;
+}
 
 function displayPeople(displayTitle, peopleToDisplay) {
 	const formatedPeopleDisplayText = peopleToDisplay
