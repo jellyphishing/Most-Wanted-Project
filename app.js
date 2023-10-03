@@ -137,18 +137,15 @@ function mainMenu(person, people) {
 
 	switch (mainMenuUserActionChoice) {
 		case 'info':
-			//! TODO
-			// displayPersonInfo(person);
+			results =  displayPersonInfo(person);
 			break;
 		case 'family':
-			//! TODO
-			// let personFamily = findPersonFamily(person, people);
-			// displayPeople('Family', personFamily);
+			let personFamily = findPersonFamily(person, people);
+			results =displayPeople('Family', personFamily);
 			break;
 		case 'descendants':
-			//! TODO
-			// let personDescendants = findPersonDescendants(person, people);
-			// displayPeople('Descendants', personDescendants);
+			let personDescendants = findPersonDescendants(person, people);
+			results = displayPeople('Descendants', personDescendants);
 			break;
 		case 'quit':
 			return;
