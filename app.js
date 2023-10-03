@@ -1,7 +1,7 @@
 // PRO TIP: To quickly navigate to a function, right click on its name and select "Go to Definition"
 
 function app(people) {
-	debugger;
+	//debugger;
 	displayWelcome();
 	runSearchAndMenu(people);
 	return exitOrRestart(people);
@@ -38,9 +38,8 @@ function searchPeopleDataSet(people) {
 		case 'name':
 			results = searchByName(people);
 			break;
-		case 'trait':
-			//! TODO
-			// results = searchByTraits(people);
+		case 'trait':					
+			 results = searchByTraits(people);
 			break;
 		default:
 			return searchPeopleDataSet(people);
@@ -49,6 +48,65 @@ function searchPeopleDataSet(people) {
 	return results;
 }
 
+function searchByTraits(people){
+	const searchTraitsChoice = validatedPrompt(
+		'Enter which trait to search by: gender, DOB, height, weight, eyecolor, or occupation',
+		['gender', 'dob', 'height', 'weight', 'eyecolor', 'occupation'],
+	);
+	let results = [];
+	switch (searchTraitsChoice){
+		case 'gender':
+			results = searchByGender(people);
+			break;
+		case 'DOB':
+			results = searchByDOB(people);
+			break;
+		case 'height':
+			results = searchByHeight(people);
+			break;
+		case 'weight':
+			results = searchByWeight(people);
+			break;
+		case 'eyecolor':
+			results = searchByEyeColor(people);
+			break;
+		case 'occupation':
+			results = searchByOccupation(people);
+			break;
+			}
+			return results;
+}
+
+function searchByGender(people){
+	const searchGenderChoice = prompt('Enter: male, female, or non-binary');
+	const genderFilterResults = people.filter((person) => person.gender === searchGenderChoice);
+	return genderFilterResults;
+}
+function searchByEyeColor(people){
+	const searchEyeColorChoice = prompt('Choose one of the following: green, hazel, blue, black, or brown');
+	const eyeColorFilterResults = people.filter((person) => person.eyeColor === searchEyeColorChoice);
+	return eyeColorFilterResults;
+}
+function searchByOccupation(people){
+	const searchOccupationChoice = prompt('Choose one of the following: programmer, assistant, landscaper, nurse, student, architect, doctor, or politician');
+	const occupationFilterResults = people.filter((person) => person.occupation === searchOccupationChoice);
+	return occupationFilterResults;
+}
+function searchByDOB(people){
+	const searchDOB = prompt('Enter date of birth mm/dd/yyyy');
+	const dobFilterResults = people.filter((person) => person.dob === searchDOB);
+	return dobFilterResults;
+}
+function searchByHeight(people){
+	const searchHeight = prompt('Enter the approximate height');
+	const heightFilterResults = people.filter((person) => person.height === searchHeight);
+	return heightFilterResults;
+}
+function searchByWeight(people){
+	const searchWeight = prompt('Enter the approximate weight');
+	const weightFilterResults = people.filter((person) => person.weight === searchWeight);
+	return weightFilterResults;
+}
 function searchById(people) {
 	const idToSearchForString = prompt('Please enter the id of the person you are searching for.');
 	const idToSearchForInt = parseInt(idToSearchForString);
