@@ -159,8 +159,17 @@ function mainMenu(person, people) {
 function displayPersonInfo(person){
 	
 	alert(`Id: ${person.id}\nFirst Name: ${person.firstName}\nLast Name: ${person.lastName}\nHeight: ${person.height}\nWeight: ${person.weight}\nEye Color: ${person.eyecolor}\nDOB: ${person.dob}\nOccupation: ${person.occupation}\nParents: ${person.parents}\nSpouse: ${person.spouse}`);
-	return totalInfoPerson;
+	//return totalInfoPerson;
 	}
+
+//function findPersonFamily(person){
+
+
+
+//}
+
+
+//function findPersonDescendants()
 
 function displayPeople(displayTitle, peopleToDisplay) {
 	const formatedPeopleDisplayText = peopleToDisplay
