@@ -178,8 +178,8 @@ function findPersonFamily(person, people){
 
 function findPersonDescendants(person, people){
 	const  childrenFilterResults   =people.filter((el) => el.parents === person.id);
-
-	alert(`Descendants:${childrenFilterResults}`);
+	const grandkidsFilterResults = people.filter((el) => el.parents === childrenFilterResults);
+	alert(`Descendants:${childrenFilterResults}\n${grandkidsFilterResults}`);
 	}
 
 function displayPeople(displayTitle, peopleToDisplay) {
