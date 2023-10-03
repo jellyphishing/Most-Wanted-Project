@@ -156,13 +156,19 @@ function mainMenu(person, people) {
 	return mainMenu(person, people);
 }
 
+function displayPersonInfo(person){
+	
+	alert(`Id: ${person.id}\nFirst Name: ${person.firstName}\nLast Name: ${person.lastName}\nHeight: ${person.height}\nWeight: ${person.weight}\nEye Color: ${person.eyecolor}\nDOB: ${person.dob}\nOccupation: ${person.occupation}\nParents: ${person.parents}\nSpouse: ${person.spouse}`);
+	return totalInfoPerson;
+	}
+
 function displayPeople(displayTitle, peopleToDisplay) {
 	const formatedPeopleDisplayText = peopleToDisplay
 		.map((person) => `${person.firstName} ${person.lastName}`)
 		.join('\n');
 	alert(`${displayTitle}\n\n${formatedPeopleDisplayText}`);
 }
-
+ 
 function validatedPrompt(message, acceptableAnswers) {
 	acceptableAnswers = acceptableAnswers.map((aa) => aa.toLowerCase());
 
