@@ -158,18 +158,29 @@ function mainMenu(person, people) {
 
 function displayPersonInfo(person){
 	
-	alert(`Id: ${person.id}\nFirst Name: ${person.firstName}\nLast Name: ${person.lastName}\nHeight: ${person.height}\nWeight: ${person.weight}\nEye Color: ${person.eyecolor}\nDOB: ${person.dob}\nOccupation: ${person.occupation}\nParents: ${person.parents}\nSpouse: ${person.spouse}`);
-	//return totalInfoPerson;
+	
+	alert(`Id: ${person.id}\nFirst Name: ${person.firstName}\nLast Name: ${person.lastName}\nHeight: ${person.height}\nWeight: ${person.weight}\nEye Color: ${person.eyecolor}\nDOB: ${person.dob}\nOccupation: ${person.occupation}\nParents: ${person.parents}\nSpouse: ${person.currentSpouse}`);
+	
 	}
 
-//function findPersonFamily(person){
+function findPersonFamily(person, people){
+	
+	const spouseFilterResults = people.filter((el) => el.id === person.currentSpouse);
+	const parentsFilterResults = people.filter((el) => el.id === person.parents);
+	const siblingsFilterResults = people.filter((el) => el.parents === person.parents);
+	
+	alert(`Spouse: ${spouseFilterResults}\n Parents: ${parentsFilterResults}\n Siblings: ${siblingsFilterResults}`);
+
+	}
+	
 
 
 
-//}
+function findPersonDescendants(person, people){
+	const  childrenFilterResults   =people.filter((el) => el.parents === person.id);
 
-
-//function findPersonDescendants()
+	alert(`Descendants:${childrenFilterResults}`);
+	}
 
 function displayPeople(displayTitle, peopleToDisplay) {
 	const formatedPeopleDisplayText = peopleToDisplay
